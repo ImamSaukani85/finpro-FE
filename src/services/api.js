@@ -84,12 +84,18 @@ export const updateProduct = (id, name, quantity, category, price, image, descri
   return axios.put(`${BASE_URL}/api/products/${id}`, bodyJSON, headerConfig);
 };
 
-export const checkout = (name, email, address) => {
+export const checkout = (name, email, address, state) => {
+  const dataCheckout = state.map((data) => ({
+    title: data.dataProduct.name,
+    total_request: data.dataProduct.total_request,
+    price: data.dataProduct.price,
+  }));
   const bodyJSON = {
-      name: name,
-      email: email,
-      address: address
-  }
+    name: name,
+    email: email,
+    address: address,
+    purchase: dataCheckout
+  };
 
-  return axios.post(`${BASE_URL}`, bodyJSON,);
-}
+  return axios.post(`${BASE_URL}`, bodyJSON);
+};

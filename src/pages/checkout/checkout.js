@@ -8,27 +8,31 @@ const Checkout = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [address, setAddress] = useState("")
+  const state = useSelector((state) => state.addItem);
+  console.log(state)
 
   const submitCheckout = async (e) => {
     e.preventDefault();
-    await checkout(name, email, address)
+    await checkout(name, email, address, state)
       .then((response) => console.log(response))
       .catch((error) => console.log(error))
   }
-  const state = useSelector((state) => state.addItem);
+
 
   var total = 0;
   const itemList = (item) => {
-    total = total + item.dataProduct.price;
+    const totalItem = item.dataProduct.price * item.dataProduct.total_request
+    total = total + totalItem;
     return (
       <li className="list-group-item d-flex justify-content-between lh-sm">
         <div>
           <h6 className="my-0">{item.dataProduct.name}</h6>
         </div>
-        <span className="text-muted">{item.dataProduct.price}</span>
+        <span className="text-muted">{totalItem}</span>
       </li>
     );
   };
+
   return (
     <>
       <div className="container">
