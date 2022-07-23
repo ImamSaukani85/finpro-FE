@@ -96,7 +96,7 @@ const Checkout = () => {
                 required={true}
                 />
               </Form.Group>
-              <Button variant="primary" type="submit" className="w-100 btn-lg">
+              <Button variant="primary" type="submit" className="w-100 btn-lg" a href="https://wa.me/6282154861734?text=Saya%20ingin%20mengonfirmasi%20pembelian%20">
                 Submit
               </Button>
             </Form>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem, delItem } from "../../redux/action/index";
@@ -51,7 +50,7 @@ const FigureProduct = (props) => {
               </h4>
               <h1 className="display-5">{props.dataProduct.name}</h1>
               <h5 className="my-4">Available Stock :{stock}</h5>
-              <Button
+              <Button variant="outline-dark"
                 onClick={() => {
                   setQuantity(quantity + 1);
                   setStock(stock - 1);
@@ -61,7 +60,7 @@ const FigureProduct = (props) => {
                 +
               </Button>
               {quantity}
-              <Button
+              <Button variant="outline-dark"
                 onClick={() => {
                   setQuantity(quantity - 1);
                   setStock(stock + 1);
